@@ -43,3 +43,33 @@ london_co = {
         'routing': True
     }
 }
+
+device_name = input('Enter device name: ')
+
+keys = london_co.get(device_name).keys()
+list_keys = list(keys)
+tuple_keys = tuple(list_keys)
+
+argument_name = input(('Enter argument name {}: ').format(tuple_keys))
+# argument_name_any_register = argument_name.lower()
+
+print((london_co.get(device_name)).get(argument_name.lower(), 'Argument not found'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

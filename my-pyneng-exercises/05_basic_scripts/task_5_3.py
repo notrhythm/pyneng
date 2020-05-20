@@ -45,6 +45,10 @@ switchport mode trunk
 switchport trunk allowed vlan 2,3,4,5
 '''
 
+mode = input('Enter switchport mode (access/trunk): ')
+interface = input('Enter type and number of interface: ')
+vlans = input('Enter vlan(s): ')
+
 access_template = [
     'switchport mode access', 'switchport access vlan {}',
     'switchport nonegotiate', 'spanning-tree portfast',
@@ -55,3 +59,25 @@ trunk_template = [
     'switchport trunk encapsulation dot1q', 'switchport mode trunk',
     'switchport trunk allowed vlan {}'
 ]
+
+dictionary = {'access': access_template,
+              'trunk': trunk_template}
+
+print('-' * 50 + '\n')
+print('interface ' + interface)
+print(('\n'.join(dictionary.get(mode))).format(vlans))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

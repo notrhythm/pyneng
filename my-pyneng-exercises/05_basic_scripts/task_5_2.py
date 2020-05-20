@@ -19,3 +19,92 @@ Mask:
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
+
+enter_ip_mask = input('Enter ip/mask: ')
+
+enter_ip_mask_split = enter_ip_mask.split('/')
+
+ip = enter_ip_mask_split[0]
+mask = enter_ip_mask_split[1]
+
+ip_octet1, ip_octet2, ip_octet3, ip_octet4 = ip.split('.')
+int_ip_octet1 = int(ip_octet1)
+int_ip_octet2 = int(ip_octet2)
+int_ip_octet3 = int(ip_octet3)
+int_ip_octet4 = int(ip_octet4)
+
+masks = {
+    "0": "0.0.0.0",
+    "1": "128.0.0.0",
+    "2": "192.0.0.0",
+    "3": "224.0.0.0",
+    "4": "240.0.0.0",
+    "5": "248.0.0.0",
+    "6": "252.0.0.0",
+    "7": "254.0.0.0",
+    "8": "255.0.0.0",
+    "9": "255.128.0.0",
+    "10": "255.192.0.0",
+    "11": "255.224.0.0",
+    "12": "255.240.0.0",
+    "13": "255.248.0.0",
+    "14": "255.252.0.0",
+    "15": "255.254.0.0",
+    "16": "255.255.0.0",
+    "17": "255.255.128.0",
+    "18": "255.255.192.0",
+    "19": "255.255.224.0",
+    "20": "255.255.240.0",
+    "21": "255.255.248.0",
+    "22": "255.255.252.0",
+    "23": "255.255.254.0",
+    "24": "255.255.255.0",
+    "25": "255.255.255.128",
+    "26": "255.255.255.192",
+    "27": "255.255.255.224",
+    "28": "255.255.255.240",
+    "29": "255.255.255.248",
+    "30": "255.255.255.252",
+    "31": "255.255.255.254",
+    "32": "255.255.255.255"}
+
+int_mask = masks[mask]
+mask_octet1, mask_octet2, mask_octet3, mask_octet4 = int_mask.split('.')
+
+int_mask_octet1 = int(mask_octet1)
+int_mask_octet2 = int(mask_octet2)
+int_mask_octet3 = int(mask_octet3)
+int_mask_octet4 = int(mask_octet4)
+
+template = '''
+Network:
+{0:<8} {1:<8} {2:<8} {3:<8}
+{0:08b} {1:08b} {2:08b} {3:08b}
+
+Mask:
+/{8}
+{4:<8} {5:<8} {6:<8} {7:<8}
+{4:08b} {5:08b} {6:08b} {7:08b}
+'''
+
+print(template.format(int_ip_octet1, int_ip_octet2, int_ip_octet3, int_ip_octet4, int_mask_octet1, int_mask_octet2, int_mask_octet3, int_mask_octet4, mask))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
